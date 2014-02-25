@@ -15,11 +15,11 @@ LoremImageCryptonator.prototype.setImage = function(image){
   
 };
 
-LoremImageCryptonator.prototype.getCryptoImage = function(text, callback){
+LoremImageCryptonator.prototype.getCryptoImage = function(prop, callback){
    
-  if(!text || (text && text.constructor !== String)){
-    throw new Error('Argument-Error: @param text not overloaded!');
-  }
+  var text = prop.text || '';
+  var channel = prop.channel == 'red' ? 0 : (prop.channel == 'green' ? 1 : (prop.channel == 'blue' ? 2 : 3));
+  var mode = prop.mode || 'slow';
   
   this._pdata.getFormatedPixelData(function(rawPixels){
     
@@ -28,34 +28,57 @@ LoremImageCryptonator.prototype.getCryptoImage = function(text, callback){
     
     for(var lindex=0; lindex < text.length; lindex++){
       
-      var letter = text[lindex];
-      var binary = this._byteCal.decimal2binary( this._byteCal.getBytesFromString(letter)[1] );
-      
-      for(var pixelPos=lindex*binary.length*4, num=0; pixelPos < (binary.length*4 + lindex*binary.length*4) && pixelPos < cryptdata.length; pixelPos+=4){
-        
-        var bluePixel = cryptdata[pixelPos+2];
-        
-        var blueBin = this._byteCal.decimal2binary( bluePixel ).split(''); 
-        blueBin[blueBin.length-1] = binary[num++];
-        blueBin = blueBin.join('');
-        
-        var blueDec = this._byteCal.binary2decimal(blueBin);
-        cryptdata[pixelPos+2] = blueDec;
-        
-      }
-      
+		var letter = text[lindex];
+		var binary = this._byteCal.decimal2binary( this._byteCal.getBytesFromString(letter)[1] );
+     
+		for(var pixelPos=lindex*binary.length*4, num=0; pixelPos < (binary.length*4 + lindex*binary.length*4) && pixelPos < cryptdata.length; pixelPos+=4){
+		
+			var pixelChannel = cryptdata[pixelPos+channel];
+			
+			if( mode == 'slow' ){
+			
+				var channelBin = this._byteCal.decimal2binary( pixelChannel ).split(''); 
+				channelBin[channelBin.length-1] = binary[num++];
+				channelBin = channelBin.join('');
+			
+				var channelDec = this._byteCal.binary2decimal(channelBin);
+				cryptdata[pixelPos+channel] = channelDec;
+			
+			}
+			else{
+				
+				var channelDec = this._byteCal.binary2decimal(binary);
+				cryptdata[pixelPos+channel] = channelDec;
+				
+				break;
+				
+			}
+			
+			
+		}
+		
     }
     
-    cryptdata[pixelPos+2] = 0;
-    cryptdata[pixelPos+6] = 255;
-    
+	// set decrypt-break point
+	if( mode == 'slow' ){
+		cryptdata[pixelPos+channel] = 0; 
+		cryptdata[pixelPos+channel+4] = 255;
+    }
+	else{
+		cryptdata[pixelPos+channel+32] = 0;
+		cryptdata[pixelPos+channel+64] = 255;
+	}
+	
     this._pdata2img(crypPixels,callback);
     
   }.bind(this));
   
 };
 
-LoremImageCryptonator.prototype.getTextFromCryptoImage = function(cryptimg){
+LoremImageCryptonator.prototype.getTextFromCryptoImage = function(prop, cryptimg){
+  
+  var channel = prop.channel == 'red' ? 0 : (prop.channel == 'green' ? 1 : (prop.channel == 'blue' ? 2 : 3));
+  var mode = prop.mode || 'slow';
   
   if(!cryptimg || !(cryptimg instanceof Image)){
     throw new Error('Argument-Error: @param cryptimg not overloaded!');
@@ -63,28 +86,39 @@ LoremImageCryptonator.prototype.getTextFromCryptoImage = function(cryptimg){
   
   var calText = "";
   var charBits = "";
-  var lastBluePixel = -1;
+  var lastPixelChannel = -1;
   
   var cryptdata = this._img2pdata(cryptimg);
+  var modePace = mode == 'slow' ? 4 : 32;
   
-  for(var pixelPos=0, letter=0; pixelPos < cryptdata.data.length; pixelPos+=4){
+  for(var pixelPos=0, letter=0; pixelPos < cryptdata.data.length; pixelPos+=modePace){
     
-    var bluePixel = cryptdata.data[pixelPos+2];
+    var pixelChannel= cryptdata.data[pixelPos+channel];
     
-    if( lastBluePixel == 0 && bluePixel == 255 ){
+    if( lastPixelChannel == 0 && pixelChannel == 255 ){
       break;
     }
     
-    if( pixelPos % 32 === 0 && pixelPos > 0 ){
-	  var decLetter = String.fromCharCode( this._byteCal.binary2decimal(charBits) );
-      calText += decLetter; 
-      charBits = "";
+	if( mode == 'slow' ){
+	
+		if( pixelPos % 32 === 0 && pixelPos > 0 ){
+		  var decLetter = String.fromCharCode( this._byteCal.binary2decimal(charBits) );
+		  calText += decLetter; 
+		  charBits = "";
+		}
+		
+		var blueBin = this._byteCal.decimal2binary( pixelChannel ).split(''); 
+		charBits += blueBin[blueBin.length-1];
+		
     }
-    
-    var blueBin = this._byteCal.decimal2binary( bluePixel ).split(''); 
-    charBits += blueBin[blueBin.length-1];
-    
-    lastBluePixel = bluePixel;
+	else{
+		
+		var decLetter = String.fromCharCode( pixelChannel );
+		calText += decLetter; 
+		
+	}
+	
+    lastPixelChannel = pixelChannel;
     
   }
   
