@@ -75,10 +75,10 @@ LoremImageCryptonator.prototype.getTextFromCryptoImage = function(cryptimg){
       break;
     }
     
-    if( pixelPos % 32 === 0 ){
-      calText += String.fromCharCode( this._byteCal.binary2decimal(charBits) );
-	  console.log( 'calText', calText );
-      charBits = '';
+    if( pixelPos % 32 === 0 && pixelPos > 0 ){
+	  var decLetter = String.fromCharCode( this._byteCal.binary2decimal(charBits) );
+      calText += decLetter; 
+      charBits = "";
     }
     
     var blueBin = this._byteCal.decimal2binary( bluePixel ).split(''); 
