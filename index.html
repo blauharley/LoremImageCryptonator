@@ -11,14 +11,16 @@
     img.onload = function(){
 
       var crypto = new LoremImageCryptonator();
+	  
       crypto.setImage(img);
+	  
       crypto.getCryptoImage({mode:'fast',channel:'green', text: 'A very top-secret sentence that must never be read' },function(cimg){
          document.body.appendChild(cimg);
       });
       
     };
 
-    img.src='img/desert.jpg';
+    img.src='img/Desert.jpg';
 
   </code>
 </pre>
