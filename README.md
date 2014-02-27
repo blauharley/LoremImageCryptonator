@@ -9,13 +9,13 @@ The options below are
 
 	<li>Necessary Options</li>
 	<ul>
-		<li>Text: String that should be inserted into a image</li>
+		<li>Text: String that should be inserted into a image.</li>
 	</ul>
 	
 	<li>Optional Options:</li>
 	<ul>
-		<li>Mode: 'fast' and 'slow' (Standard: 'slow')</li>
-		<li>channel: 'red', 'green', 'blue' and 'alpha' (Standard: 'alpha')</li>
+		<li>Mode: 'fast' and 'slow'. When mode 'fast' is selected each sign is put into a whole pixel. It's faster than 'slow' because 'slow' puts each bit of each sign into the LSB (least significant bit) so when 'slow' is selected each signs takes put eight pixel of the image. So 'fast' is faster and consumes less memory or alters less pixels of the image but depending on the text-size there is a chance that a user might see that some image-sections look different in comparison with other sections. (Standard: 'slow')</li>
+		<li>channel: 'red', 'green', 'blue' and 'alpha'. Text-signs can be put into red, green, blue or alpha channel of each pixel. The alpha-channel is recommended because it's not likely that you see any difference before and after some text has been inserted. (Standard: 'alpha')</li>
 	</ul>
 	
 </ul>
