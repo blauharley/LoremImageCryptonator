@@ -8,28 +8,24 @@ The options below are
 <ul>
 
 	<li>Necessary Options</li>
-	<li>
-		<ul>
-			<li>Text: String that should be inserted into a image</li>
-		</ul>
-	</li>
+	<ul>
+		<li>Text: String that should be inserted into a image</li>
+	</ul>
 	
 	<li>Optional Options:</li>
-	<li>
-		<ul>
-			<li>Mode: 'fast' and 'slow' (Standard: 'slow')</li>
-			<li>channel: 'red', 'green', 'blue' and 'alpha' (Standard: 'alpha')</li>
-		</ul>
-	</li>
+	<ul>
+		<li>Mode: 'fast' and 'slow' (Standard: 'slow')</li>
+		<li>channel: 'red', 'green', 'blue' and 'alpha' (Standard: 'alpha')</li>
+	</ul>
 	
 </ul>
 
 
 <h3>Methods</h3>
 
-The lib offers following methods:
+The package offers following methods:
 
-<b>getCryptoImage</b> is used for inserting some text into an image. <b>getCryptoImage</b> overloads following params:
+<b>getCryptoImage</b> is used for inserting some text into an image. 
 
 <blockquote>
 
@@ -43,7 +39,7 @@ The lib offers following methods:
 
 </blockquote>
 
-<b>getTextFromCryptoImage</b> is used for extracting some text that has been inserted into an image. <b>getTextFromCryptoImage</b> overloads following params:
+<b>getTextFromCryptoImage</b> is used for extracting some text that has been inserted into an image.
 
 <blockquote>
 
