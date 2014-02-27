@@ -34,10 +34,10 @@ describe("All-Tests", function() {
 
 	describe("LoremImageCryptonator-Tests", function() {
 
-	  var sentences = ["This is a Test to check the ByteCalculator up and test it whether it works correctly.", "A top-secret sentence","Another sentences for testing"];
+	  var sentences = ["This is a Test to check the ByteCalculator up and test it whether it works correctly.", "A top-secret sentence", "Another sentences for testing"];
 	
 	  var cryptonator = new LoremImageCryptonator();
-	  var images = ['./img/desert.jpg', './img/thunder.jpg', './img/island.jpg'];
+	  var images = ['./img/Desert.jpg', './img/thunder.jpg', './img/island.jpg'];
 	  var countTest = 0;
 	  
 	  var cryptoImg;
@@ -52,8 +52,8 @@ describe("All-Tests", function() {
 			
 			var randNum = Math.floor( Math.random() * 3 );
 			
-			mode =  randNum == 1 ? 'slow' : 'fast';
-			channel = randNum == 1 ? 'red' : (randNum == 2 ? 'green' : 'blue');
+			mode =  randNum ? 'slow' : 'fast';
+			channel = randNum ? 'red' : (randNum == 2 ? 'green' : 'blue');
 			
 			var img = new Image();
 
@@ -78,34 +78,33 @@ describe("All-Tests", function() {
 	  
 	  });
 
-	  
-	  it("should get sentence out of first Crypto-Image", function() {
+	  function checkCryptoImg(){
 		
 		var text = cryptonator.getTextFromCryptoImage({ mode:mode,channel: channel }, cryptoImg);
 		var sentence =  sentences[countTest++] ;
 		
-		expect(text).toEqual( sentence );
+		expect(text.indexOf(sentence)).not.toEqual( -1 );
+		
+	  }
+	  
+	  it("should get sentence out of first Crypto-Image", function() {
+		
+		checkCryptoImg();
 		
 	  });
 	  
 	  
 	  it("should get sentence out of second Crypto-Image", function() {
 		
-		var text = cryptonator.getTextFromCryptoImage({ mode:mode,channel: channel }, cryptoImg);
-		var sentence =  sentences[countTest++] ;
-		
-		expect(text).toEqual( sentence );
+		checkCryptoImg();
 		
 	  });
 
 	  
 	  it("should get sentence out of third Crypto-Image", function() {
 		
-		var text = cryptonator.getTextFromCryptoImage({ mode:mode,channel: channel }, cryptoImg);
-		var sentence =  sentences[countTest++] ;
+		checkCryptoImg();
 		
-		expect(text).toEqual( sentence );
-
 	  });
 	  
 	  
