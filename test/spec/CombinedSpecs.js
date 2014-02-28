@@ -37,7 +37,7 @@ describe("All-Tests", function() {
 	  var sentences = ["This is a Test to check the ByteCalculator up and test it whether it works correctly.", "A top-secret sentence", "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.   Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.   Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse"];
 	
 	  var cryptonator = new LoremImageCryptonator();
-	  var images = ['./img/Desert.jpg', './img/thunder.jpg', './img/island.jpg'];
+	  var images = ['./img/thunder.png', './img/island.gif', './img/Desert.jpg'];
 	  var countTest = 0;
 	  
 	  var cryptoImg;
@@ -84,7 +84,7 @@ describe("All-Tests", function() {
 		
 	  });
 
-	  function checkCryptoImgByTestNr(cimg, testnr){
+	  function checkCryptoImgByTestNr(cimg, testnr, mode, channel){
 		
 		var text = cryptonator.getTextFromCryptoImage({ mode:mode,channel: channel }, cimg);
 		var sentence =  sentences[testnr] ;
@@ -95,7 +95,7 @@ describe("All-Tests", function() {
 	  
 	  it("should get sentence out of first Crypto-Image", function() {
 		
-		checkCryptoImgByTestNr(cryptoImg, countTest);
+		checkCryptoImgByTestNr(cryptoImg, countTest, mode, channel);
 		countTest++;
 		
 	  });
@@ -103,7 +103,7 @@ describe("All-Tests", function() {
 	  
 	  it("should get sentence out of second Crypto-Image", function() {
 		
-		checkCryptoImgByTestNr(cryptoImg, countTest);
+		checkCryptoImgByTestNr(cryptoImg, countTest, mode, channel);
 		countTest++;
 		
 	  });
@@ -111,7 +111,7 @@ describe("All-Tests", function() {
 	  
 	  it("should get sentence out of third Crypto-Image", function() {
 		
-		checkCryptoImgByTestNr(cryptoImg, countTest);
+		checkCryptoImgByTestNr(cryptoImg, countTest, mode, channel);
 		countTest++;
 		
 	  });
@@ -143,13 +143,13 @@ describe("All-Tests", function() {
 			document.body.appendChild(cimg);
 			cimg = document.getElementsByTagName('img')[0];
 			
-			checkCryptoImgByTestNr(cimg, 2);
+			checkCryptoImgByTestNr(cimg, 2, mode, channel);
 		
 		  });
 		  
 		};
 
-		img.src='./img/thunder.jpg';
+		img.src='./img/thunder.png';
 		
 	  });
 	  
