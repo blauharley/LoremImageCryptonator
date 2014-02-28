@@ -1,7 +1,7 @@
 LoremImageCryptonator
 =====================
 
-Short-Description: A JavaScript-package to insert some text into an image (*.jpg, *.png, *.gif) and extract some text from an image (Crypto-image).
+General-Description: A JavaScript-package to insert some text into an image (*.jpg, *.png, *.gif) and extract some text from an image (Crypto-image).
 
 <h3>Supported Options:</h3>
 The options below are
@@ -14,14 +14,30 @@ The options below are
 	
 	<li>Optional Options:</li>
 	<ul>
-		<li>Mode: 'fast' and 'slow'. When mode 'fast' is selected each sign is put into a whole pixel. It's faster than 'slow' because 'slow' puts each bit of each sign into the LSB (least significant bit) so when 'slow' is selected each signs takes put eight pixel of the image. So 'fast' is faster and consumes less memory or alters less pixels of the image but depending on the text-size there is a chance that a user might see that some image-sections look different in comparison with other sections. (Standard: 'slow')</li>
-		<li>channel: 'red', 'green', 'blue' and 'alpha'. Text-signs can be put into red, green, blue or alpha channel of each pixel. The alpha-channel is recommended because it's not likely that you see any difference before and after some text has been inserted. (Standard: 'alpha')</li>
+		<li>Mode: 'fast' and 'slow'. When mode 'fast' is selected each sign is put into a whole pixel. It's faster than 'slow' because 'slow' puts each bit of each sign into the LSB (least significant bit) of each pixel successively. When 'slow'-mode is selected each signs takes put eight pixel of the image partly but it has got a very low effect on the image. 
+		      So 'fast'-mode is faster and has to alter less pixels of the image but depending on the text-size there is a chance that a user might see that some image-sections look different in comparison with other sections. Furthermore when using 'fast'-mode there can be saved more signs into an image than using 'slow'-mode.(Standard: 'slow')</li>
+			<br/>
+				Advantages of 'fast'-mode:
+			<ul>
+				<li>Faster while inserting each sign of some text</li>
+				<li>Greater Number of signs can be stored in an image</li>
+				<li>Alters less pixels of an image</li>
+			</ul>
+			
+			<br/>
+				Advantages of 'slow'-mode:
+			<ul>
+				<li>Very low effect on each pixel of an image.</li>
+				<li>Cryptography is better, LSB of each pixels is altered and not whole pixel as it is the case of 'fast'-mode.</li>
+			</ul>
+			
+		<li>channel: 'red', 'green', 'blue' and 'alpha'. Text-signs can be put into red-, green-, blue- or alpha-channel of each pixel. It is recommended to use the alpha-channel because it's not likely that you see any visual-difference before and after some text has been inserted. (Standard: 'alpha')</li>
 	</ul>
 	
 </ul>
 
 
-<h3>Methods</h3>
+<h3>Methods:</h3>
 
 The package offers following methods:
 
@@ -52,3 +68,16 @@ The package offers following methods:
 	<p><b>getTextFromCryptoImage( in opt:Object, in cimg:Image ) : String</b></p>
 
 </blockquote>
+
+
+<h3>Supported Browsers:</h3>
+<ul>
+	<li>IE9+</li>
+	<li>Mozilla Firefox</li>
+	<li>Google Chrome</li>
+	<li>Safari</li>
+	<li>Opera</li>
+</ul>
+
+<h3>License:</h3>
+GNU: This software can be used and modified freely and without any restrictions. 
