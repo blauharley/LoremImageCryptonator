@@ -9,12 +9,12 @@ The options below are
 
 	<li>Necessary Options</li>
 	<ul>
-		<li>Text: String that should be inserted into a image.</li>
+		<li><b>text</b>: String that should be inserted into a image.</li>
 	</ul>
 	
 	<li>Optional Options:</li>
 	<ul>
-		<li>Mode: 'fast' and 'slow'. When mode 'fast' is selected each sign is put into a whole pixel. It's faster than 'slow' because 'slow' puts each bit of each sign into the LSB (least significant bit) of each pixel successively. When 'slow'-mode is selected each signs takes put eight pixel of the image partly but it has got a very low effect on the image. 
+		<li><b>mode</b>: 'fast' and 'slow'. When mode 'fast' is selected each sign is put into a whole pixel. It's faster than 'slow' because 'slow' puts each bit of each sign into the LSB (least significant bit) of each pixel successively. When 'slow'-mode is selected each signs takes put eight pixel of the image partly but it has got a very low effect on the image. 
 		      So 'fast'-mode is faster and has to alter less pixels of the image but depending on the text-size there is a chance that a user might see that some image-sections look different in comparison with other sections. Furthermore when using 'fast'-mode there can be saved more signs into an image than using 'slow'-mode.(Standard: 'slow')</li>
 			<br/>
 				Advantages of 'fast'-mode:
@@ -31,7 +31,7 @@ The options below are
 				<li>Cryptography is better, LSB of each pixels is altered and not whole pixel as it is the case of 'fast'-mode.</li>
 			</ul>
 			
-		<li>channel: 'red', 'green', 'blue' and 'alpha'. Text-signs can be put into red-, green-, blue- or alpha-channel of each pixel. It is recommended to use the alpha-channel because it's not likely that you see any visual-difference before and after some text has been inserted. (Standard: 'alpha')</li>
+		<li><b>channel</b>: 'red', 'green', 'blue' and 'alpha'. Text-signs can be put into red-, green-, blue- or alpha-channel of each pixel. It is recommended to use the alpha-channel because it's not likely that you see any visual-difference before and after some text has been inserted. (Standard: 'alpha')</li>
 	</ul>
 	
 </ul>
