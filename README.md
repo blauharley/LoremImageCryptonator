@@ -1,7 +1,11 @@
 LoremImageCryptonator
 =====================
 
-General-Description: A JavaScript-package to insert some text into an image (*.jpg, *.png, *.gif) and extract some text from an image (Crypto-image).
+General-Description: <br/>
+
+A JavaScript-package to insert some text into an image (*.jpg, *.png, *.gif) and extract some text from an image (Crypto-image).</br>
+
+With help of this package an user can handle text that can be inserted in one of the fourth-pixel-channels (red, green, blue and alpha) within an image. Furthmore each signs of some text can be placed either on a LSB(least significant bit) of a channel or on a whole channel of a pixel itself.  The packages enables an user to extract text from an image that some text has been inserted before. This option of extracting text out of an image can be done on an HTML-Image-Element (<img/>) or on an Image-Object (Image).
 
 <h3>Supported Options:</h3>
 The options below are
