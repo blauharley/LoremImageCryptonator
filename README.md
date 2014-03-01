@@ -31,15 +31,57 @@ The options below are
 				<li>Cryptography is better, LSB of each pixels is altered and not whole pixel as it is the case of 'fast'-mode.</li>
 			</ul>
 			
+			<br/>
+			
 		<li><b>channel</b>: 'red', 'green', 'blue' and 'alpha'. Text-signs can be put into red-, green-, blue- or alpha-channel of each pixel. It is recommended to use the alpha-channel because it's not likely that you see any visual-difference before and after some text has been inserted. (Standard: 'alpha')</li>
 	</ul>
 	
 </ul>
 
+<h3>Useful Tips:</h3>
+
+For those who want to store large quantities of text always keep in mind that the bigger the image is the more signs can be stored into and in this case the 'fast'-mode is recommended.
+<br/>
+
+Szenario-Example when an image-Size of 480x320 size is used:
+<ul>
+	
+	<li>
+		'fast'-mode:
+		<ul>
+			<li>max. Number of signs:  153600 (480x320)</li>
+		</ul>
+	</li>
+	
+	<li>
+		'slow'-mode:
+		<ul>
+			<li>max. Number of signs:  19200 ((480x320)/8)</li>
+		</ul>
+	</li>
+	
+</ul>
+
+<br/>
+
+For those who want to mask text in an image the 'slow'-mode plus the channel alpha is recommended as these options are selected by default.
+
 
 <h3>Methods:</h3>
 
 The package offers following methods:
+
+<b>setImage</b> is used for overloading an image that get used for being inserted some text into. 
+
+<blockquote>
+
+	<p>@param <i>img</i> must be an Image-Object</p>
+
+	<p>@return undefined</p>
+	
+	<p><b>setImage( in img:Image ) : undefined</b></p>
+
+</blockquote>
 
 <b>getCryptoImage</b> is used for inserting some text into an image. 
 
