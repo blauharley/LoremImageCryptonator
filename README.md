@@ -62,8 +62,6 @@ Szenario-Example when an image-Size of 480x320 size is used:
 	
 </ul>
 
-<br/>
-
 For those who want to mask text in an image the 'slow'-mode plus the channel alpha is recommended as these options are selected by default.
 
 
