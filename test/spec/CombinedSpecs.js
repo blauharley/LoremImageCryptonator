@@ -2,7 +2,7 @@
 describe("All-Tests", function() {
 
 
-	describe("BayteCalculator-Tests", function() {
+	describe("ByteCalculator-Object-Tests", function() {
 
 	  var sentence = "This is a Test to check the ByteCalculator up and test it whether it works correctly.";
 	  var calulator = new ByteCalculator();
@@ -16,8 +16,30 @@ describe("All-Tests", function() {
 			byteWordRep.push( calulator._padString( letter.charCodeAt().toString('2') ) );
 		});
 	  });
-
-	  it("should get same binary", function() {
+		
+		
+	  it("should calculate same decimal as given", function(){
+		
+		var decimal = Math.floor(Math.random() * 255);
+		
+		var binary = calulator.decimal2binary(decimal);
+		
+		expect(decimal).toBe( calulator.binary2decimal(binary) );
+		
+	  });
+	  
+	  it("should calculate same binary as given", function(){
+		
+		var pos = Math.floor(Math.random() * word.length);
+		var binary = byteWordRep[pos];
+		
+		var decimal = calulator.binary2decimal(binary);
+		
+		expect(binary).toBe( calulator.decimal2binary(decimal) );
+		
+	  });
+	  
+	  it("should get same binary out of word", function() {
 		
 		var pos = Math.floor(Math.random() * word.length);
 		var letterBin = calulator.decimal2binary( word[ pos ].charCodeAt() );
@@ -25,6 +47,8 @@ describe("All-Tests", function() {
 		expect(letterBin).toEqual( byteWordRep[pos] );
 		
 	  });
+	  
+	  
 
 	  
 	});
@@ -32,7 +56,7 @@ describe("All-Tests", function() {
 
 	
 
-	describe("LoremImageCryptonator-Tests", function() {
+	describe("LoremImageCryptonator-Object-Tests", function() {
 
 	  var sentences = ["This is a Test to check the ByteCalculator up and test it whether it works correctly.", "A top-secret sentence", "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.   Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.   Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse"];
 	
