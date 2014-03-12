@@ -14,28 +14,34 @@
 	  
       crypto.setImage(img);
 	  
-      crypto.getCryptoImage({mode:'fast',channel:'green', text: 'A very top-secret sentence that must never be read' },function(cimg){
+	  // default-mode: slow
+	  // default-channel: alpha
+      crypto.getCryptoImage({mode:'fast', text: 'A very top-secret sentence that must never be read' },function(cimg){
          document.body.appendChild(cimg);
       });
       
     };
 
-    img.src='img/Desert.png';
+    img.src='./img/aquarel.png';
 
   </code>
 </pre>
 
-<img id="encryptedImg" src="img/Desert.png"/>
+<img id="encryptedImg" src="img/aquarel.png"/>
 
 <h3>
   Extracted text out of Encrypted Image
 </h3>
 <pre>
   <code>
+
     var cimg = document.getElementById('encryptedImg');
 	
     var crypto = new LoremImageCryptonator();
-    var extractedtext = crypto.getTextFromCryptoImage({mode:'fast',channel:'green'}, cimg);
+    var extractedtext = crypto.getTextFromCryptoImage({mode:'fast'}, cimg);
+    
+    console.log('decrypted Text: ', extractedtext );
+    alert('decrypted Text: '+extractedtext);
     
   </code>
 </pre>
@@ -49,7 +55,7 @@
     var cimg = document.getElementById('encryptedImg');
 	
     var crypto = new LoremImageCryptonator();
-    var extractedtext = crypto.getTextFromCryptoImage({mode:'fast',channel:'green'}, cimg);
+    var extractedtext = crypto.getTextFromCryptoImage({mode:'fast'}, cimg);
     
     console.log('decrypted Text: ', extractedtext );
     alert('decrypted Text: '+extractedtext);

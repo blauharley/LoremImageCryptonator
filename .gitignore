@@ -1,5 +1,5 @@
 *.zip
 *.db
-*.jpg
-*.png
-*.gif
+test/img/*.jpg
+test/img/*.png
+test/img/*.gif
