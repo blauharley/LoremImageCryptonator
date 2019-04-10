@@ -73,11 +73,11 @@ The package offers following methods:
 
 <blockquote>
 
-	<p>@param <i>img</i> must be an Image-Object</p>
+<p>@param <i>img</i> must be an Image-Object</p>
 
-	<p>@return undefined</p>
-	
-	<p><b>setImage( in img:Image ) : undefined</b></p>
+<p>@return undefined</p>
+
+<p><b>setImage( in img:Image ) : undefined</b></p>
 
 </blockquote>
 
@@ -85,13 +85,13 @@ The package offers following methods:
 
 <blockquote>
 
-	<p>@param <i>opt</i> must be a JSON-Object and contains the options (text, mode and channel)</p>
+<p>@param <i>opt</i> must be a JSON-Object and contains the options (text, mode and channel)</p>
 
-	<p>@param <i>callback</i> must be a Function-Object that gets called when Crypto-image is ready to be viewed or inserted into HTML-Elements. The callback-function must define one param that represents the Crypto-Image after a successful text-insertion.</p>
-	
-	<p>@return undefined</p>
-	
-	<p><b>getCryptoImage( in opt:Object, in callback:Function ) : undefined</b></p>
+<p>@param <i>callback</i> must be a Function-Object that gets called when Crypto-image is ready to be viewed or inserted into HTML-Elements. The callback-function must define one param that represents the Crypto-Image after a successful text-insertion.</p>
+
+<p>@return undefined</p>
+
+<p><b>getCryptoImage( in opt:Object, in callback:Function ) : undefined</b></p>
 
 </blockquote>
 
@@ -99,13 +99,13 @@ The package offers following methods:
 
 <blockquote>
 
-	<p>@param <i>opt (optional)</i> must be a JSON-Object but can be omitted when standard options have been used to insert text into image.</p>
-	
-	<p>@param <i>cimg</i> must be an Image-Object that some text has been inserted into before.</p>
-	
-	<p>@return String that represents the inserted Text</p>
-	
-	<p><b>getTextFromCryptoImage( in opt:Object, in cimg:Image ) : String</b></p>
+<p>@param <i>opt (optional)</i> must be a JSON-Object but can be omitted when standard options have been used to insert text into image.</p>
+
+<p>@param <i>cimg</i> must be an Image-Object that some text has been inserted into before.</p>
+
+<p>@return String that represents the inserted Text</p>
+
+<p><b>getTextFromCryptoImage( in opt:Object, in cimg:Image ) : String</b></p>
 
 </blockquote>
 
